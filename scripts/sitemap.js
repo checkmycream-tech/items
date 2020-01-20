@@ -11,7 +11,7 @@ const sm = new Sitemap({
     cacheTime: 0, // default
     level: 'warn', // default warns if it encounters bad data
     lastmodDateOnly: false // relevant for baidu
-})
+});
 const sitemap1 = sm.toString() // returns the xml as a string
 
 fs.writeFileSync('./sitemap.xml', sitemap1);

@@ -7,11 +7,11 @@ const baseUrl = `${config.root}/docs`;
 // cd /Users/manjeshpv/Downloads/product-dump/products-dump/product_reviews
 // mkdir ../two
 // mv `ls | head -1000` ../two`
-const dataFilePath = '/Users/manjeshpv/Downloads/product-dump/products-dump/one';
+const dataFilePath = '/Users/manjeshpv/Downloads/product-dump/products-dump/product_reviews';
 
 const seoInformation = (_post) => {
     const post = _post;
-    post.slug = slug(post.title, {'mode': 'rfc3986'});
+
     console.log(post.slug);
     post.author = 'Suvojit Manna';
     post.seo = {
@@ -30,7 +30,13 @@ const save = async (f) => {
 
     const post = {
         title: product.prod_name,
+        slug: slug(product.prod_name, {'mode': 'rfc3986'})
     };
+    const file = `${baseUrl}/products/${post.slug}.html`
+    if(!fs.statSync(file)) {
+        console.log('>>>>>>>> found', file)
+        return
+    }
 
     const allSentences = [];
     post.reviews = product
@@ -48,11 +54,13 @@ const save = async (f) => {
             if(x.polarity > 0) post.positive_reviews.push(x.text);
             post.negative_reviews.push(x.text);
         });
-    console.log({ sorted });
+
 
     const renderedMarkdownFile = hbs.render(seoInformation(post), 'readme');
     console.log(`${baseUrl}/products/${post.slug}.md`);
-    fs.writeFileSync(`${baseUrl}/products/${post.slug}.html`, renderedMarkdownFile)
+
+
+    fs.writeFileSync(file, renderedMarkdownFile)
 };
 
 const run = async () => {
@@ -62,7 +70,7 @@ const run = async () => {
     for(let i =0; i < files.length; i += 1){
         const file = files[i];
         try {
-            console.log('iterating', file);
+            console.log('iterating', i);
             await save(`${dataFilePath}/${file}`)
         } catch (err) {
             console.log('error while', file, err.message)
