@@ -1,0 +1,29 @@
+{
+  "name": "products",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "cd docs && http-server . ",
+    "dev": "vuepress dev docs --port 8089 ",
+    "generate": "cd scripts ; node --max_old_space_size=8000 generateMarkdown.js",
+    "build": "node --max_old_space_size=28096 ./node_modules/.bin/vuepress build docs -d public;",
+    "postbuild": "vuepress-sitemap -H https://products.checkmycream.com -d docs;",
+    "homepage": "node scripts/generate-homepage.js"
+  },
+  "devDependencies": {
+    "@limdongjin/vuepress-plugin-simple-seo": "^1.0.4-alpha.5",
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1",
+    "esm": "^3.2.25",
+    "vuepress": "^1.2.0",
+    "vuepress-plugin-sitemap": "^2.3.1",
+    "vuepress-plugin-social-share": "^0.1.2"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.2",
+    "sitemap": "^5.1.0",
+    "sluglife": "^0.9.8",
+    "xml2json": "^0.12.0"
+  }
+}

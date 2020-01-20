@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <meta name="description" content="{{title}}">
+    <meta charset="utf-8">
+
+    <meta name="application-name" content="Check My Cream">
+</head>
+<body>
+    <h1><a href="https://products.checkmycream.com/products/{{slug}}.html">{{title}}]</a></h1>
+
+    <h2> Positive Reviews</h2>
+
+    <ol>
+        {{#each positive_reviews}}
+            <li>{{this}}</li>
+        {{/each}}
+    </ol>
+
+
+    <h2>Negative Reviews</h2>
+    <ol>
+        {{#each negative_reviews}}
+            <li> {{this}}</li>
+        {{/each}}
+    </ol>
+
+    <h2>All Reviews</h2>
+
+    <ol>
+        {{#each reviews}}
+            <li> {{this}}</li>
+        {{/each}}
+    </ol>
+
+
+</body>
+</html>
+
+
+
+
