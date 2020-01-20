@@ -14,4 +14,4 @@ const sm = new Sitemap({
 });
 const sitemap1 = sm.toString() // returns the xml as a string
 
-fs.writeFileSync('./sitemap.xml', sitemap1);
+fs.writeFileSync('./../docs/sitemap.xml', sitemap1);

@@ -5,7 +5,7 @@ const { root } = require('./config');
 const hbs = {
     render(data, name) {
         const template = fs.readFileSync(`${root}/scripts/${name}.hbs`).toString();
-        console.log({ template });
+        // console.log({ template });
         return handlebars.compile(template)(Object.assign( {}, data));
     },
 };
