@@ -21,7 +21,7 @@
     "vuepress-plugin-social-share": "^0.1.2"
   },
   "dependencies": {
-    "handlebars": "^4.7.2",
+    "handlebars": "^4.7.7",
     "sitemap": "^5.1.0",
     "sluglife": "^0.9.8",
     "xml2json": "^0.12.0"
